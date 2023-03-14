@@ -18,19 +18,19 @@ const Author = connection.define('tb_autores', {
   },
   dt_nascimento: {
     type: Sequelize.DATE,
-    alowedNull: false,
+    allowNull: false,
   },
   dt_cadastro: {
     type: Sequelize.DATE,
-    alowedNull: false,
+    allowNull: false,
   },
   dt_desligamento: {
     type: Sequelize.DATE,
-    alowedNull: true,
+    allowNull: true,
   },
   dt_ultima_atualizacao: {
     type: Sequelize.DATE,
-    alowedNull: false,
+    allowNull: false,
   },
 },
 {
