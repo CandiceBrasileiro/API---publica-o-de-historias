@@ -27,7 +27,9 @@ const Book = connection.define('tb_livros', {
   }
 })
 
-Book.belongsTo(Author);
-Author.hasMany(Book);
+// Book.belongsTo(Author);
+Author.hasMany(Book, {
+  foreignKey: 'fk_autor',
+});
 
 module.exports = Book;

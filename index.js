@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const authorsController = require("./authors/AuthorsController");
 
 const Author = require("./authors/Author");
+const Book = require("./books/book");
 
 //Body parser
   app.use(bodyParser.urlencoded({extended: false}));
