@@ -24,12 +24,19 @@ const Book = connection.define('tb_livros', {
   dt_ultima_atualizacao: {
     type: Sequelize.DATE,
     allowNull: false
+  }},
+  {
+    modelName: "Book",
+    tableName: "tb_livros",
+    createdAt: "dt_cadastro",
+    updatedAt: "dt_ultima_atualizacao",
+    underscore: true,
   }
-})
+)
 
 // Book.belongsTo(Author);
 Author.hasMany(Book, {
-  foreignKey: 'fk_autor',
+  foreignKey: 'id_autor',
 });
 
 module.exports = Book;
