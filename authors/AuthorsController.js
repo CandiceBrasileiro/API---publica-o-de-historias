@@ -64,35 +64,27 @@ router.post("/authors/", (req, res) => {
 })
 // tá "deletando" id que não existem
 router.delete("/authors/:id", (req, res) => {
-  let id_d = req.params.id;
-console.log(id_d)
-  Author.findByPk(id_d)
+  let id = req.params.id;
+console.log(id)
+  Author.findByPk(id)
       .then((data) => {
         Author.destroy({
           where: {
-            id_autor: id_d,
+            id_autor: id,
           },
         }).then(() => {
           res
             .status(200)
-            .send({ message: `O autor ${id_d} foi excluído com sucesso` });
+            .send({ message: `O autor ${id} foi excluído com sucesso` });
         });
       })
       .catch(() => {
         res
           .status(500)
-          .send({ message: `Não foi possível excluir o autor ${id_d}` });
+          .send({ message: `Não foi possível excluir o autor ${id}` });
       });
     });
 
-    // router.get("/authors/edit/:id", (req, res) => {
-    //   let id = req.params.id;
-    //   Author.findByPk(id).then(authors => {
-    //     if(authors != undefined){
-    //       Author.
-    //     }
-    //   })
-    // })
 
     router.put("/authors/:id", (req, res) => {
       var id = req.params.id;
