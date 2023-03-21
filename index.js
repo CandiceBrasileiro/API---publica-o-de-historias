@@ -5,10 +5,12 @@ const bodyParser = require("body-parser");
 
 // model de autores
 const authorsController = require("./authors/AuthorsController");
-const BooksController = require("./books/BooksController")
+const BooksController = require("./books/BooksController");
+const UsersController = require("./users/UsersController");
 
 const Author = require("./authors/Author");
 const Book = require("./books/Book");
+const User = require("./users/User");
 
 //Body parser
   app.use(bodyParser.urlencoded({extended: false}));
@@ -26,6 +28,7 @@ connection
 
     app.use("/", authorsController );
     app.use("/", BooksController );
+    app.use("/", UsersController );
 
     app.get("/", (req, res) => {
       res.send("primeiro get");

@@ -14,7 +14,7 @@ router.get("/books", (req, res) => {
   })
   .catch((err) => {
     res.status(500).send({
-      message: err.message || "Não foi possível recuerar os dados."
+      message: err.message || "Não foi possível recuperar os dados."
     });
   })
 });
@@ -128,5 +128,6 @@ router.get("/books/author/:id", (req, res) => {
       message: "Erro ao buscar dados"
     });
   });
-})
+});
+
 module.exports = router;

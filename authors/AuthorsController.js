@@ -37,22 +37,20 @@ router.get("/authors/:id", (req, res) => {
     });
 });
 
-router.post("/authors/", (req, res) => {
+router.post("/author/", (req, res) => {
 
   var nm_autor = req.body.nm_autor; 
   var nu_cpf = req.body.nu_cpf; 
   var dt_nascimento = req.body.dt_nascimento;
-  var dt_cadastro = req.body.dt_cadastr;
-  var dt_desligamento = req.body.dt_desligamento;
-  var dt_ultima_atualizacao = req.body.dt_ultima_atualizacao;
+  var data = new Date();
 
   Author.create({
     nm_autor:  nm_autor,
     nu_cpf: nu_cpf,  
     dt_nascimento: dt_nascimento, 
-    dt_cadastro: dt_cadastro, 
-    dt_desligamento: dt_desligamento, 
-    dt_ultima_atualizacao: dt_ultima_atualizacao
+    dt_cadastro: data.toISOString().split('T')[0], 
+    dt_desligamento: null, 
+    dt_ultima_atualizacao: data.toISOString().split('T')[0]
   }).then((data) => {
       res.statusCode = 200;
       res.json(data);
