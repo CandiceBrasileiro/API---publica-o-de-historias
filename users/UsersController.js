@@ -3,6 +3,7 @@ const router = express.Router();
 const Sequelize = require('sequelize');
 const connection = require('../database/database');
 const User = require('./User');
+const bcrypt = require("bcryptjs");
 
 router.get("/users", (req, res) => {
   User.findAll ({
@@ -60,10 +61,13 @@ router.post("/user/", (req, res) => {
   var email = req.body.email;
   var password = req.body.senha;
   var data = new Date();
+  var salt = bcrypt.genSaltSync(10);
+  var hash = bcrypt.hashSync(password, salt);
+  console.log(hash, 'dasdasd')
 
   User.create({
     email: email,
-    senha: password,
+    senha: hash,
     dt_cadastro:  data.toISOString().split('T')[0],
     dt_atualizacao:  data.toISOString().split('T')[0],
     in_ativo: 1
@@ -104,6 +108,18 @@ router.put("/users/:id", (req, res) => {
   })
 })
 
+// router.post("/authenticate", (req, res) => {
+//   var email = req.body.email;
+//   var password = req.body.senha;
+
+//   User.findOne({where:{email:email}}).then(user => {
+//     if(user != undefined){
+
+//       var correct =
+//       if()
+//     }
+//   })
+// })
 
 
 module.exports = router;
