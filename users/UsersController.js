@@ -128,11 +128,11 @@ router.post("/auth/", (req, res) => {
         res.json(req.session.user);
           
       } else {
-        res.status(500).send({message: "Erro"})
+        res.status(500).send({message: "Senha incorreta."})
         console.log("deu ruim")
       }
     }else{
-      res.status(500).send({message: "Erro"})
+      res.status(500).send({message: "Usuário não encontrado."})
       console.log("deu ruim")
     }
   })
