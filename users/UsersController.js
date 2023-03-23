@@ -124,15 +124,16 @@ router.post("/auth/", (req, res) => {
           id: user.id_usuario,
           email: user.email
         }
-        
         res.statusCode = 200;
         res.json(req.session.user);
           
       } else {
-        res.status(500)
+        res.status(500).send({message: "Erro"})
         console.log("deu ruim")
-          
       }
+    }else{
+      res.status(500).send({message: "Erro"})
+      console.log("deu ruim")
     }
   })
 })
