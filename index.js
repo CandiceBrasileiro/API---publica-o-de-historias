@@ -2,11 +2,17 @@ const express = require("express");
 const app = express();
 const connection = require("./database/database");
 const bodyParser = require("body-parser");
+const session = require("express-session");
 
 // model de autores
 const authorsController = require("./authors/AuthorsController");
 const BooksController = require("./books/BooksController");
 const UsersController = require("./users/UsersController");
+
+// Sessiomn
+app.use(session({
+  secret: "qualquercoisa", cookie: { maxAge: 3000000 }
+}))
 
 const Author = require("./authors/Author");
 const Book = require("./books/Book");
