@@ -8,6 +8,7 @@ const session = require("express-session");
 const authorsController = require("./authors/AuthorsController");
 const BooksController = require("./books/BooksController");
 const UsersController = require("./users/UsersController");
+const ChapterController = require("./chapters/ChapterController.js");
 
 // Sessiomn
 app.use(session({
@@ -17,6 +18,7 @@ app.use(session({
 const Author = require("./authors/Author");
 const Book = require("./books/Book");
 const User = require("./users/User");
+const Chapter = require("./chapters/Chapter");
 
 //Body parser
   app.use(bodyParser.urlencoded({extended: false}));
@@ -35,6 +37,7 @@ connection
     app.use("/", authorsController );
     app.use("/", BooksController );
     app.use("/", UsersController );
+    app.use("/", ChapterController );
 
     app.get("/", (req, res) => {
       res.send("primeiro get");

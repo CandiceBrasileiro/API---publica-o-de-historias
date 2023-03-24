@@ -129,14 +129,12 @@ router.post("/auth/", (req, res) => {
           
       } else {
         res.status(500).send({message: "Senha incorreta."})
-        console.log("deu ruim")
+
       }
-    }else{
+    } else {
       res.status(500).send({message: "Usuário não encontrado."})
-      console.log("deu ruim")
     }
   })
 })
-
 
 module.exports = router;
