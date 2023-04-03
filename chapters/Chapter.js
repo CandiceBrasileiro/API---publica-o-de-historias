@@ -6,6 +6,7 @@ const Chapter = connection.define('tb_capitulos', {
   id_capitulo: {
     type: Sequelize.INTEGER,
     allowNull: false,
+    primaryKey: true,
     autoIncrement: true
   },
   id_livro: {

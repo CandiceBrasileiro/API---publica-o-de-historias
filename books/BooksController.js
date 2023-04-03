@@ -42,13 +42,12 @@ router.post("/books/", (req, res)=> {
   
   var name = req.body.nm_livro;
   var year = req.body.nu_ano_criacao;
-  var lastUpdate = req.body.dt_ultima_atualizacao;
-  var id_autor = req.body.id_autor;
+  var data = new Date();
 
 Book.create({
   nm_livro: name,
   nu_ano_criacao: year,
-  dt_ultima_atualizacao: lastUpdate,
+  dt_ultima_atualizacao: data.toISOString().split('T')[0],
   id_autor: id_autor
 }).then((data)=>{
   res.statusCode = 200;
@@ -85,14 +84,14 @@ router.put("/books/:id", (req, res)=>{
   var id = req.params.id;
   var name = req.body.nm_livro;
   var year = req.body.nu_ano_criacao;
-  var lastUpdate = req.body.dt_ultima_atualizacao;
+  var data = new Date();
   var id_autor = req.body.id_autor;
 
   Book.update(
     {
       nm_livro: name,
       nu_ano_criacao: year,
-      dt_ultima_atualizacao: lastUpdate,
+      dt_ultima_atualizacao:data.toISOString().split('T')[0],
       id_autor: id_autor
     }, {
       where: {
