@@ -13,6 +13,9 @@ const Chapter = connection.define('tb_capitulos', {
     type: Sequelize.INTEGER,
     allowNull: false
   },
+  n_capitulo: {
+    type: Sequelize.SMALLINT,
+  },
   nm_titulo: {
     type: Sequelize.STRING,
     allowNull: false

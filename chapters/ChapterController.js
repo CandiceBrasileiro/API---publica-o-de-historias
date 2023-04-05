@@ -18,6 +18,7 @@ router.get("/chapters", (req, res) => {
   })
 });
 
+// id_capitulo
 router.get("/chapters/:id", (req, res) => {
   var id = req.params.id;
   Chapter.findByPk(id)
@@ -38,13 +39,16 @@ router.get("/chapters/:id", (req, res) => {
     })
 })
 
-router.post("/chapter/", (req, res) => {
-
+router.post("/chapter/:id", (req, res) => {
+  var id = req.params.id;
+  var chapter = req.body.n_capitulo;
   var title = req.body.nm_titulo;
   var fullText = req.body.te_texto;
   var data = new Date();
 
   Chapter.create({
+    id_livro: id,
+    n_capitulo: chapter,
     nm_titulo: title,
     te_texto: fullText,
     dt_cadastro: data.toISOString().split('T')[0],
