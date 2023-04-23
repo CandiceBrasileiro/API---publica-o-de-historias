@@ -62,12 +62,12 @@ router.post("/chapter/:id", (req, res) => {
     });
   });
   });
-
+// id_capitulo
   router.delete("/chapter/:id", (req, res) => {
     var id = req.params.id;
   Chapter.findByPk(id)
     .then((data) => {
-      Book.destroy({
+      Chapter.destroy({
         where: {
           id_livro: id,
         },
@@ -87,12 +87,14 @@ router.post("/chapter/:id", (req, res) => {
   router.put("/chapter/:id", (req, res) => {
 
     var id = req.params.id;
+    var chapter = req.body.n_capitulo;
     var title = req.body.nm_titulo;
     var fullText = req.body.te_texto;
     var data = new Date();
 
     Chapter.update(
       {
+        n_capitulo: chapter,
         nm_titulo: title,
         te_texto: fullText,
         dt_ultima_atualizacao: data.toISOString().split('T')[0]

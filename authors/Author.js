@@ -31,8 +31,7 @@ const Author = connection.define('tb_autores', {
   dt_ultima_atualizacao: {
     type: Sequelize.DATE,
     allowNull: false,
-  },
-},
+  }},
 {
   modelName: "Author",
   tableName: "tb_autores",
@@ -40,6 +39,10 @@ const Author = connection.define('tb_autores', {
   updatedAt: "dt_ultima_atualizacao",
   underscore: true,
 })
+
+User.hasOne(Author, {
+  foreignKey: 'id_usuario',
+});
 
 Author.sync({force: false}).then(()=>{});
 
