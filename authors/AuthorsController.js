@@ -5,7 +5,8 @@ const connection = require('../database/database');
 const Author = require('./Author');
 
 router.get("/authors", (req, res) => {
-  Author.findAll({ raw: true })
+  Author.findAll({ 
+    raw: true })
     .then((authors) => {
       res.json(authors);
       res.statusCode = 200;
@@ -39,12 +40,14 @@ router.get("/authors/:id", (req, res) => {
 
 router.post("/author/", (req, res) => {
 
+  var id_usuario = req.body.id_usuario;
   var nm_autor = req.body.nm_autor; 
   var nu_cpf = req.body.nu_cpf; 
   var dt_nascimento = req.body.dt_nascimento;
   var data = new Date();
 
   Author.create({
+    id_usuario: id_usuario,
     nm_autor:  nm_autor,
     nu_cpf: nu_cpf,  
     dt_nascimento: dt_nascimento, 
@@ -83,7 +86,6 @@ console.log(id)
       });
     });
 
-
     router.put("/authors/:id", (req, res) => {
       var id = req.params.id;
       var nm_autor = req.body.nm_autor; 
@@ -91,7 +93,7 @@ console.log(id)
       var dt_nascimento = req.body.dt_nascimento;
       var dt_cadastro = req.body.dt_cadastr;
       var dt_desligamento = req.body.dt_desligamento;
-      var dt_ultima_atualizacao = req.body.dt_ultima_atualizacao;
+      var data = new Date();
       
       Author.update(
         {
@@ -100,7 +102,7 @@ console.log(id)
         dt_nascimento: dt_nascimento, 
         dt_cadastro: dt_cadastro, 
         dt_desligamento: dt_desligamento, 
-        dt_ultima_atualizacao: dt_ultima_atualizacao
+        dt_ultima_atualizacao: data.toISOString().split('T')[0],
       }, {
         where: {
           id_autor:id

@@ -1,5 +1,6 @@
 const Sequelize  = require('sequelize');
 const connection = require('../database/database');
+const User = require('../users/User');
 
 const Author = connection.define('tb_autores', {
   id_autor: {
