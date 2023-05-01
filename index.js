@@ -3,6 +3,9 @@ const app = express();
 const connection = require("./database/database");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+var cors = require('cors');
+
+app.use(cors());
 
 // model de autores
 const authorsController = require("./authors/AuthorsController");
@@ -10,7 +13,7 @@ const BooksController = require("./books/BooksController");
 const UsersController = require("./users/UsersController");
 const ChapterController = require("./chapters/ChapterController.js");
 
-// Sessiomn
+// Session
 app.use(session({
   secret: "qualquercoisa", cookie: { maxAge: 3000000 }
 }))
@@ -19,6 +22,7 @@ const Author = require("./authors/Author");
 const Book = require("./books/Book");
 const User = require("./users/User");
 const Chapter = require("./chapters/Chapter");
+
 
 //Body parser
   app.use(bodyParser.urlencoded({extended: false}));
